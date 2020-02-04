@@ -31,6 +31,8 @@ open file backend/weather/app.js and replace apiKey empty value with your api ke
 
 cd weatherapp/backend
 
+
+
 sam package --s3-bucket serverless-workshop-eficode-1 --template-file template.yaml --region eu-central-1 --output-template-file packaged.yaml --region eu-central-1
 
 
