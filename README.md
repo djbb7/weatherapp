@@ -29,13 +29,19 @@ aws s3api create-bucket --bucket serverless-workshop-eficode-1  --create-bucket-
 
 open file backend/weather/app.js and replace apiKey empty value with your api key (make sure to add it as string 'your-api-key')
 
-cd weatherapp/backend
 
+cd weatherapp/backend/weather && npm install
 
+cd ..
 
 sam package --s3-bucket serverless-workshop-eficode-1 --template-file template.yaml --region eu-central-1 --output-template-file packaged.yaml --region eu-central-1
 
 
 sam deploy --template-file packaged.yaml --capabilities CAPABILITY_NAMED_IAM --stack-name weather-app-yourGroupNumber --region eu-central-1
 
-Once deployment finish, you should see WeatherApi in the outputs. Get the output value. It's your Api.
+cd ..
+cd frontend && npm install
+
+Once deployment finish, you should see BaseApi in the outputs. Get the output value. It's your Api. Copy the value.
+
+Open file backend/frontend/src/index.jsx and replare apiURL empty string with this value (keep it as string)
