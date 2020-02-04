@@ -28,20 +28,20 @@ add the credentials that your received earlier.
 
 
 
-
+yourGroupNumber
 aws s3api create-bucket --bucket serverless-workshop-eficode-1  --create-bucket-configuration LocationConstraint=eu-central-1 
 
 
 
 
 
-cd weatherapp/backend
+
 
 open file backend/weather/app.js and replace apiKey empty value with your api key (make sure to add it as string 'your-api-key')
 
-
+cd weatherapp/backend
 
 sam package --s3-bucket serverless-workshop-eficode-1 --template-file template.yaml --region eu-central-1 --output-template-file packaged.yaml
 
 
-sam deploy --template-file packaged.yaml --capabilities CAPABILITY_NAMED_IAM --stack-name weather-app
+sam deploy --template-file packaged.yaml --capabilities CAPABILITY_NAMED_IAM --stack-name weather-app-yourGroupNumber
