@@ -44,4 +44,14 @@ cd frontend && npm install
 
 Once deployment finish, you should see BaseApi in the outputs. Get the output value. It's your Api. Copy the value.
 
-Open file backend/frontend/src/index.jsx and replare apiURL empty string with this value (keep it as string)
+Open file backend/frontend/src/index.jsx and replace apiURL empty string with this value (keep it as string)
+
+npm run build
+
+
+aws s3api create-bucket --bucket serverless-workshop-eficode-frontend-1  --create-bucket-configuration LocationConstraint=eu-central-1 
+
+
+aws s3 website  s3://serverless-workshop-eficode-frontend-1/ --index-document index.html
+
+aws s3 cp dist s3://serverless-workshop-eficode-frontend-1/ --recursive 
