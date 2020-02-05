@@ -16,6 +16,7 @@ exports.lambdaHandler = async (event, context) => {
     let response;
     try {
         const weatherData = await fetchWeather();
+        
         const body = weatherData.weather ? weatherData.weather[0] : {};
 
         response = {
