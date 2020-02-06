@@ -1,11 +1,30 @@
 
-const apiKey = process.env.API_KEY || '';
+//const apiKey = process.env.API_KEY || '';
 const mapURI = "http://api.openweathermap.org/data/2.5";
 const targetCity = process.env.TARGET_CITY || "Helsinki,fi";
 const fetch = require('node-fetch');
+const AWS = equire('aws-sdk');
 
+const fetchApiKey = async () => {
+    let region = "eu-central-1",
+        secretName = "openweather-api-key",
+        secret,
+        decodedBinarySecret;
 
-const fetchWeather = async () => {
+    let client = new AWS.SecretsManager({
+        region: region
+    });
+
+    let data = await client.getSecretValue({ SecretId: secretName }).promise();
+
+    if (data && data.SecretString) {
+        const secret = data.SecretString;
+        const parsedSecret = JSON.parse(secret);
+        return parsedSecret.api_key;
+    }
+};
+
+const fetchWeather = async (apiKey) => {
     const endpoint = `${mapURI}/weather?q=${targetCity}&appid=${apiKey}&units=metric`;
     const response = await fetch(endpoint);  
     return response ? response.json() : {}
@@ -15,7 +34,8 @@ const fetchWeather = async () => {
 exports.lambdaHandler = async (event, context) => {
     let response;
     try {
-        const weatherData = await fetchWeather();
+        const apiKey = await fetchApiKey();
+        const weatherData = await fetchWeather(apiKey);
         
         const body = weatherData;
 
