@@ -17,7 +17,7 @@ exports.lambdaHandler = async (event, context) => {
     try {
         const weatherData = await fetchWeather();
         
-        const body = weatherData.weather ? weatherData.weather[0] : {};
+        const body = weatherData;
 
         response = {
             'statusCode': 200,
