@@ -3,7 +3,7 @@
 const mapURI = "http://api.openweathermap.org/data/2.5";
 const targetCity = process.env.TARGET_CITY || "Helsinki,fi";
 const fetch = require('node-fetch');
-const AWS = equire('aws-sdk');
+const AWS = require('aws-sdk');
 
 const fetchApiKey = async () => {
     let region = "eu-central-1",
