@@ -6,7 +6,7 @@ const fetch = require('node-fetch');
 
 
 const fetchWeather = async () => {
-    const endpoint = `${mapURI}/weather?q=${targetCity}&appid=${apiKey}&`;
+    const endpoint = `${mapURI}/weather?q=${targetCity}&appid=${apiKey}&units=metric`;
     const response = await fetch(endpoint);  
     return response ? response.json() : {}
   };
