@@ -24,7 +24,7 @@ Resources:
       Runtime: nodejs10.x
       Environment:
         Variables:
-          API_KEY: '{{resolve:ssm-secure:openweather-api-key:1}}' 
+          API_KEY: '{{resolve:secretsmanager:openweather-api-key:SecretString:api_key::}}' 
       Events:
         Weather:
           Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
