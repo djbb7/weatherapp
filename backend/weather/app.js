@@ -1,5 +1,5 @@
 
-const apiKey = '';
+const apiKey = process.env.API_KEY || '';
 const mapURI = "http://api.openweathermap.org/data/2.5";
 const targetCity = process.env.TARGET_CITY || "Helsinki,fi";
 const fetch = require('node-fetch');
