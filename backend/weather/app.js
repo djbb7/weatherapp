@@ -19,8 +19,7 @@ const fetchApiKey = async () => {
 
     if (data && data.SecretString) {
         const secret = data.SecretString;
-        const parsedSecret = JSON.parse(secret);
-        return parsedSecret.api_key;
+        return secret;
     }
 };
 
