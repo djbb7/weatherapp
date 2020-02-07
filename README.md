@@ -21,7 +21,7 @@ We are using Cloud9 as this already configures the AWS command line tools. You c
 Once Cloud9 environment is created you will be presented with a text editor and a shell. Type the following command in the shell:
 
 ```
-git clone https://github.com/azarboon/weatherapp.git
+git clone https://github.com/djbb7/weatherapp.git
 
 ```
 
@@ -125,7 +125,7 @@ Luckily AWS provides a Secret Manager that stores secrets encrypted at rest and 
 
 Replace `api-key-value` with your API key and run the following command:
 ```
-aws secretsmanager create-secret --name openweather-api-key --secret-string 'api-key-value'
+aws secretsmanager create-secret --name openweather-api-key-yourGroupNumber --secret-string 'api-key-value'
 ```
 
 If you navigate to the Secret Manager on the AWS account panel, you will see that your secret has been created.
